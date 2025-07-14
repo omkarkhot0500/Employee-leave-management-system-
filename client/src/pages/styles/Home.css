@@ -1,0 +1,91 @@
+
+.home-page {
+  min-height: calc(100vh - 71px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0e2d49;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
+
+.home-content {
+  max-width: 1000px;
+  padding: 0 1rem; 
+}
+
+.home-page h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+  color: white;
+}
+
+.home-page h2 {
+  font-size: 2.4rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #00C6FF
+}
+
+.highlight {
+  font-style: italic;
+}
+
+.home-page p {
+  font-size: 1.6rem;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.home-btn {
+  background-color: white;
+  border: 2px solid #fff;
+  color: #0e2d49;
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.home-btn:hover {
+  background-color: #b6c4d0;
+  /* border-color: #1e1e2f; */
+}
+
+@media (max-width: 768px) {
+  .home-page h1 {
+    font-size: 2.2rem; 
+  }
+
+  .home-page h2 {
+    font-size: 1.5rem; 
+  }
+
+  .home-page p {
+    font-size: 1rem; 
+  }
+
+  .home-btn {
+    width: 100%; 
+    display: inline-block;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-page h1 {
+    font-size: 1.8rem;
+  }
+
+  .home-page h2 {
+    font-size: 1.2rem;
+  }
+
+  .home-page p {
+    font-size: 0.95rem;
+  }
+}

@@ -14,7 +14,7 @@ const Home = () => {
     <div className="home-page">
       <div className="home-content">
         <h1>
-          Welcome to <span className="highlight">HyScaler</span>
+          Welcome to <span className="highlight">GAT LMS</span>
         </h1>
         <h2>Employee Leave Management System</h2>
         <p>

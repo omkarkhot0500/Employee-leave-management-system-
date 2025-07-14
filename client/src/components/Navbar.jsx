@@ -4,6 +4,7 @@ import { AuthContext } from "../auth/authContext";
 import { toast } from "react-toastify";
 import "./styles/Navbar.css";
 import logoImg from "../assets/logo.png";
+import logoImg1 from "../assets/newlogorounded.jpeg";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
@@ -23,7 +24,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-top">
         <NavLink to="/" className="logo" onClick={closeMenu}>
-          <img src={logoImg} alt="Logo" className="logo-img" />
+          <img src={logoImg1} alt="Logo" className="logo-img" />
         </NavLink>
         <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
           ☰

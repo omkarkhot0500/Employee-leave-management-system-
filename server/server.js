@@ -28,7 +28,7 @@ app.use("/api/leave", leaveRoutes);
 app.use("/api/user", userRoutes);
 app.get("/", (req, res) => {
   res.send(
-    "Hello, This is the backend of HyScaler Employee leave management system."
+    "Hello, This is the backend of GAT LMS."
   );
 });
 

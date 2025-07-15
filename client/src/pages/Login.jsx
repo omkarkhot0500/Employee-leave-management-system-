@@ -1,10 +1,9 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import axios from "../api/axiosInstance";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import "./styles/Login.css";
 import { AuthContext } from "../auth/authContext";
-import { useEffect } from "react";
-import { toast } from "react-toastify";
 import Loader from "../components/Loader";
 
 const Login = () => {
@@ -32,7 +31,9 @@ const Login = () => {
       navigate("/");
     } catch (err) {
       const serverMsg =
-        err?.response?.data?.message || "Login failed. Please try again.";
+        err?.response?.data?.message ||
+        err?.message ||
+        "Login failed. Please try again.";
       toast.error(serverMsg);
     } finally {
       setLoading(false);
@@ -61,7 +62,9 @@ const Login = () => {
           }
           required
         />
+
         {loading ? <Loader /> : <button type="submit">Login</button>}
+
         <p className="redirect">
           Don't have an account? <Link to="/register">Register</Link>
         </p>

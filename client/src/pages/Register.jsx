@@ -6,6 +6,8 @@ import "./styles/Register.css";
 import { AuthContext } from "../auth/authContext";
 import Loader from "../components/Loader";
 
+const departments = ["CSE", "CSE (AI/ML)", "AI/ML", "AIDS", "ECE", "EEE", "MECH", "CIVIL"];
+
 const Register = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -16,11 +18,12 @@ const Register = () => {
     password: "",
     confirmPassword: "",
     role: "manager",
+    department: "",
     manager: "",
   });
+
   const [managers, setManagers] = useState([]);
   const [loading, setLoading] = useState(false);
-
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -28,7 +31,9 @@ const Register = () => {
       toast("Logout first to Register!!");
       navigate("/");
     }
+
     document.title = "Register";
+
     const fetchManagers = async () => {
       try {
         const res = await axios.get("/user/managers");
@@ -50,18 +55,20 @@ const Register = () => {
       return;
     }
 
+    const payload = { ...formData };
     if (formData.role === "manager") {
-      delete formData.manager;
+      delete payload.manager;
     }
 
     try {
       setLoading(true);
-      const res = await axios.post("/auth/register", formData);
-      navigate("/login");
+      const res = await axios.post("/auth/register", payload);
       toast.success(res.data.message || "Registration successful!");
+      navigate("/login");
     } catch (err) {
       const serverMsg =
         err?.response?.data?.message ||
+        err?.message ||
         "Registration failed. Please try again.";
       toast.error(serverMsg);
     } finally {
@@ -123,6 +130,21 @@ const Register = () => {
           <option value="manager">Manager</option>
         </select>
 
+        <select
+          value={formData.department}
+          onChange={(e) =>
+            setFormData({ ...formData, department: e.target.value })
+          }
+          required
+        >
+          <option value="">Select Department</option>
+          {departments.map((dept, i) => (
+            <option key={i} value={dept}>
+              {dept}
+            </option>
+          ))}
+        </select>
+
         {formData.role === "employee" && (
           <select
             value={formData.manager}
@@ -141,6 +163,7 @@ const Register = () => {
         )}
 
         {loading ? <Loader /> : <button type="submit">Register</button>}
+
         <p className="redirect">
           Already have an account? <Link to="/login">Login</Link>
         </p>

@@ -8,10 +8,6 @@ It lets:
 - Managers approve/reject requests, comment, and reset balances.
 - Managers view a leave calendar for their team.
 
-### Deployment:
-
-**🌐 Live Demo:** [https://employee-leave-management-system-alpha.vercel.app/](https://employee-leave-management-system-alpha.vercel.app/)  
-
 
 ---
 
